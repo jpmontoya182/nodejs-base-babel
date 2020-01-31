@@ -3,20 +3,26 @@
   "version": "0.0.0",
   "private": true,
   "scripts": {
-    "start": "node ./src/bin/www",
-    "server": "babel-node ./src/bin/www",
+    "start": "SET NODE_ENV=development && yarn build && node ./dist/bin/www",
     "dev": "SET NODE_ENV=development && npm-run-all server",
-    "clean": "rimraf dist",
-    "build": "babel ./src --out-dir dist",
     "prod": "NODE_ENV=production npm-run-all clean build server:prod",
+    "clean": "rimraf dist",
+    "server": "babel-node ./src/bin/www",
+    "build": "babel ./src --out-dir dist",
     "watch": "nodemon"
   },
   "dependencies": {
+    "@babel/plugin-transform-runtime": "^7.8.3",
+    "@babel/runtime": "^7.8.4",
+    "archiver": "^3.1.1",
+    "aws-sdk": "^2.610.0",
     "cookie-parser": "~1.4.4",
     "debug": "~2.6.9",
     "express": "~4.16.1",
+    "fs": "^0.0.1-security",
     "morgan": "~1.9.1",
-    "rimraf": "^3.0.1"
+    "rimraf": "^3.0.1",
+    "stream": "^0.0.2"
   },
   "devDependencies": {
     "@babel/cli": "^7.8.4",
